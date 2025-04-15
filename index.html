@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Easy Chatroom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #121212;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    h1 { color: #00ffc3; }
+    #chat { display: none; flex-direction: column; width: 100%; max-width: 500px; }
+    #messages { flex: 1; overflow-y: auto; margin-bottom: 10px; border: 1px solid #333; padding: 10px; background: #1f1f1f; height: 300px; border-radius: 8px; }
+    .msg { margin: 5px 0; padding: 8px 12px; border-radius: 20px; max-width: 70%; }
+    .sent { align-self: flex-end; background: #00ffc3; color: #000; }
+    .received { align-self: flex-start; background: #333; }
+    input, button {
+      padding: 10px; margin-top: 5px;
+      border-radius: 8px; border: none;
+      font-size: 1rem;
+    }
+    input { width: calc(100% - 20px); background: #222; color: #eee; }
+    button { background: #00ffc3; color: #000; cursor: pointer; }
+    #room-controls { display: flex; flex-direction: column; width: 300px; gap: 0.5rem; }
+    .row { display: flex; gap: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Easy Chatroom 💬</h1>
+
+  <div id="room-controls">
+    <button onclick="generateRoomCode()">🔐 Generate Room Code</button>
+    <div class="row">
+      <input type="text" id="roomCodeInput" placeholder="Enter Room Code">
+      <button onclick="joinRoom()">➡️ Join</button>
+    </div>
+    <p id="status"></p>
+  </div>
+
+  <div id="chat">
+    <p><strong>Room Code:</strong> <span id="roomDisplay" style="color:#00ffc3;"></span></p>
+    <div id="messages"></div>
+    <input type="text" id="msgInput" placeholder="Type your message...">
+    <button onclick="sendMessage()">📤 Send</button>
+  </div>  
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
