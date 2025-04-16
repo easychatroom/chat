@@ -143,6 +143,29 @@
       padding: 5px 15px;
       color: #aaa;
     }
+    #userSidebar {
+      position: fixed;
+      top: 0;
+      left: -260px; /* hidden by default */
+      width: 250px;
+      height: 100%;
+      background: #1a1a1a;
+      box-shadow: 3px 0 5px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: left 0.3s ease;
+    }
+    
+    #userSidebar.show {
+      left: 0;
+    }
+    
+    #sidebarToggle {
+      background: none;
+      border: none;
+      color: #00ffc3;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
     @media (max-width: 600px) {
       header {
@@ -180,17 +203,12 @@
   <div id="chatScreen">
     <div id="chatApp">
   <header>
+    <button id="sidebarToggle" onclick="toggleSidebar()">☰</button>
     <div>Room: <span id="roomDisplay"></span></div>
     <div>You: <span id="userDisplay"></span></div>
   </header>
 
   <div style="display: flex; flex: 1; overflow: hidden;">
-    <!-- SIDEBAR -->
-    <aside id="userSidebar" style="width: 220px; background: #1a1a1a; padding: 1rem; overflow-y: auto;">
-      <h3>Users</h3>
-      <ul id="userList" style="list-style: none; padding: 0;"></ul>
-    </aside>
-
     <!-- CHAT BODY -->
     <main style="flex: 1; display: flex; flex-direction: column;">
       <div id="messages" style="flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 10px;"></div>
@@ -200,7 +218,10 @@
       </div>
     </main>
   </div>
-
+  <aside id="userSidebar" style="width: 220px; background: #1a1a1a; padding: 1rem; overflow-y: auto;">
+    <h3>Users</h3>
+    <ul id="userList" style="list-style: none; padding: 0;"></ul>
+  </aside>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
   <script src="script.js"></script>
