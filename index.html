@@ -44,18 +44,6 @@
       width: 90%;
       max-width: 300px;
     }
-    button2 {
-      margin-left: 300px;
-      background: #00ffc3;
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      padding: 12px 20px;
-      font-weight: bold;
-      cursor: pointer;
-      width: 90%;
-      max-width: 75px;
-    }
     #chatScreen {
       display: flex;
       justify-content: center;
@@ -63,16 +51,24 @@
       height: 100%;
       background: #121212;
     }
-    
+    .sender-name {
+      font-weight: bold;
+      color: #00aaff;
+    }
+
     #chatApp {
       display: flex;
       flex-direction: column;
       height: 100%;
       width: 100%;
       max-width: 700px;
-      border-left: 1px solid #222;
-      border-right: 1px solid #222;
       background: #121212;
+    }
+
+    @media (max-width: 768px) {
+      #chatApp {
+        max-width: 100%;
+      }
     }
 
     header {

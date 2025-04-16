@@ -75,6 +75,19 @@ function startChat() {
   listenForMessages();
   listenForTyping();
   startInactivityTimer();
+  logSystemMessage(`${username} joined the room`);
+  window.addEventListener('beforeunload', () => {
+    logSystemMessage(`${username} left the room`);
+  });
+}
+function logSystemMessage(text) {
+  const key = db.ref().push().key;
+  db.ref(`rooms/${roomCode}/messages/${key}`).set({
+    msg: text,
+    sender: "System",
+    senderId: "system",
+    timestamp: Date.now()
+  });
 }
 
 function showScreen(id) {
@@ -106,7 +119,9 @@ function listenForMessages() {
     const { msg, sender, senderId, timestamp } = snap.val();
     const sent = senderId === clientId;
     addMessage(msg, sender, timestamp, sent);
-    db.ref(`rooms/${roomCode}/messages/${snap.key}`).remove();
+    if (roomCode !== STATIC_ROOM) {
+      db.ref(`rooms/${roomCode}/messages/${snap.key}`).remove();
+    }    
   });
 }
 
@@ -114,7 +129,7 @@ function addMessage(text, sender, timestamp, sent) {
   const div = document.createElement("div");
   div.classList.add("msg", sent ? "sent" : "received");
   const time = new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  div.innerHTML = `<strong>${sender}</strong><br>${text}<small>${time}</small>`;
+  div.innerHTML = `<span class="sender-name">${sender}</span><br>${text}<small>${time}</small>`;
   document.getElementById("messages").appendChild(div);
   document.getElementById("messages").scrollTop = 99999;
 }
