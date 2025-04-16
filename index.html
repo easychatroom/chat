@@ -143,22 +143,6 @@
       padding: 5px 15px;
       color: #aaa;
     }
-    #userSidebar {
-      position: fixed;
-      top: 0;
-      left: -260px; /* hidden by default */
-      width: 250px;
-      height: 100%;
-      background: #1a1a1a;
-      box-shadow: 3px 0 5px rgba(0,0,0,0.3);
-      z-index: 1000;
-      transition: left 0.3s ease;
-    }
-    
-    #userSidebar.show {
-      left: 0;
-    }
-    
     #sidebarToggle {
       background: none;
       border: none;
@@ -166,6 +150,23 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
+    
+    #userSidebar {
+      position: fixed;
+      top: 0;
+      right: -260px;
+      width: 250px;
+      height: 100%;
+      background: #1a1a1a;
+      box-shadow: -3px 0 5px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: right 0.3s ease;
+    }
+    
+    #userSidebar.show {
+      right: 0;
+    }
+
 
     @media (max-width: 600px) {
       header {
@@ -202,12 +203,15 @@
 
   <div id="chatScreen">
     <div id="chatApp">
-  <header>
-    <button id="sidebarToggle" onclick="toggleSidebar()">☰</button>
-    <div>Room: <span id="roomDisplay"></span></div>
-    <div>You: <span id="userDisplay"></span></div>
-  </header>
-
+      <header style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          Room: <span id="roomDisplay"></span>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <div>You: <span id="userDisplay"></span></div>
+          <button id="sidebarToggle" onclick="toggleSidebar()">☰</button>
+        </div>
+      </header>      
   <div style="display: flex; flex: 1; overflow: hidden;">
     <!-- CHAT BODY -->
     <main style="flex: 1; display: flex; flex-direction: column;">
