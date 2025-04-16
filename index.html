@@ -149,8 +149,8 @@
       color: #00ffc3;
       font-size: 1.5rem;
       cursor: pointer;
+      margin-left: 1rem; /* Push away from edge */
     }
-    
     #userSidebar {
       position: fixed;
       top: 0;
@@ -203,15 +203,11 @@
 
   <div id="chatScreen">
     <div id="chatApp">
-      <header style="display: flex; justify-content: space-between; align-items: center;">
-        <div>
-          Room: <span id="roomDisplay"></span>
-        </div>
-        <div style="display: flex; gap: 1rem; align-items: center;">
-          <div>You: <span id="userDisplay"></span></div>
-          <button id="sidebarToggle" onclick="toggleSidebar()">☰</button>
-        </div>
-      </header>      
+      <header style="display: flex; align-items: center; justify-content: space-between;">
+        <button id="sidebarToggle" onclick="toggleSidebar()">☰</button>
+        <div>Room: <span id="roomDisplay"></span></div>
+        <div>You: <span id="userDisplay"></span></div>
+      </header>          
   <div style="display: flex; flex: 1; overflow: hidden;">
     <!-- CHAT BODY -->
     <main style="flex: 1; display: flex; flex-direction: column;">
