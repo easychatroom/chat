@@ -170,7 +170,10 @@
     #userSidebar.show {
       right: 0;
     }
-
+    #announcementArea{
+      background-color: #1a1a1a;
+      padding: 1.5%;
+    }
     @media (max-width: 768px) {
       #chatApp {
         max-width: 100%;
@@ -244,10 +247,9 @@
         <div>You: <span id="userDisplay"></span></div>
         <div id="onlineStatus" style="color:#0f0;font-weight:bold;">● Online</div>
       </header>
-      <div id="announcementArea" style="font-size:10px;margin-top:10px;word-wrap:break-word;"></div>
       <div id="messages"></div>
       <div id="typing"></div>
-
+      <div id="announcementArea" style="font-size:15px;margin-top:10px;word-wrap:break-word;"></div>
       <div id="input-bar">
         <input id="msgInput" placeholder="Type a message..." oninput="sendTyping()" />
         <button id="recordBtn" onclick="toggleRecording()" title="Record Voice">🎙️</button>
