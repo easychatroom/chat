@@ -51,10 +51,6 @@
       cursor: pointer;
     }
 
-    #chatScreen {
-      display: none;
-      height: 100%;
-    }
     #chatApp {
       display: flex;
       flex-direction: column;
@@ -113,7 +109,6 @@
       font-weight: bold;
       color: #00aaff;
     }
-
     #typing {
       font-size: 0.85rem;
       padding: 0 1rem 5px;
@@ -127,7 +122,6 @@
       background: #1f1f1f;
       gap: 10px;
     }
-
     #recordBtn {
       background: #222;
       color: #0ff;
@@ -145,7 +139,6 @@
     #recordBtn:hover {
       background: #333;
     }
-
     #msgInput {
       flex: 1;
       padding: 10px;
@@ -155,7 +148,6 @@
       color: #eee;
       font-size: 1rem;
     }
-
     #userSidebar {
       position: fixed;
       top: 0;
@@ -170,7 +162,6 @@
     #userSidebar.show {
       right: 0;
     }
-
     @media (max-width: 768px) {
       #chatApp {
         max-width: 100%;
@@ -180,6 +171,16 @@
 </head>
 <body>
 
+  <!-- Login Screen -->
+  <div id="authScreen" class="screen">
+    <div class="container">
+      <h2>Login</h2>
+      <input id="emailInput" type="email" placeholder="Email" />
+      <input id="passwordInput" type="password" placeholder="Password" />
+      <button onclick="signIn(document.getElementById('emailInput').value, document.getElementById('passwordInput').value)">Login</button>
+      <button onclick="signUp(document.getElementById('emailInput').value, document.getElementById('passwordInput').value)">Register</button>
+    </div>
+  </div>
   <!-- Screens -->
   <div id="profileScreen" class="screen">
     <div class="container">
@@ -198,13 +199,6 @@
       <small id="passwordError" style="color:red; display:none;">Incorrect password</small>
     </div>
   </div> 
-  <div id="usernameScreen" class="screen">
-    <div class="container">
-      <h2>Enter your Username</h2>
-      <input id="usernameInput" placeholder="Enter your Username" />
-      <button onclick="saveUsername()">Continue</button>
-    </div>
-  </div>
   <div id="roomChoiceScreen" class="screen">
     <div class="container">
       <h2>Hi <span id="namePreview"></span>!</h2>
@@ -250,6 +244,7 @@
     </div>
     <button onclick="tryEditProfile()" style="margin-top:1rem; width:100%;">✏️ Edit Profile</button>
   </aside>
+
   <!-- Profile viewer -->
   <div id="profileViewer" style="display:none; position:fixed; top:0; right:0; background:#1a1a1a; width:300px; height:100%; z-index:1010; padding:1rem; box-shadow:-3px 0 10px rgba(0,0,0,0.4); overflow-y:auto;">
     <h3>User Profile</h3>
@@ -262,6 +257,6 @@
   <!-- Firebase and Script -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
-  <script src="script-deob.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
