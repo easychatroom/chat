@@ -186,7 +186,6 @@
       <h2>Set up your profile</h2>
       <input id="profileUsernameInput" placeholder="Choose a username" />
       <textarea id="profileDescriptionInput" placeholder="Write a short description..." style="width:100%;height:80px;border-radius:8px;padding:10px;background:#222;color:#eee;"></textarea>
-      <input type="file" id="profileAvatarInput" accept="image/*" style="color:#eee;" />
       <img id="profileAvatarPreview" style="margin-top:10px;width:80px;height:80px;border-radius:50%;display:none;" />
       <button onclick="submitProfile()">Continue</button>
       <small id="profileError" style="color: red; display: none;">Username is required.</small>
@@ -240,8 +239,6 @@
       <div id="input-bar">
         <input id="msgInput" placeholder="Type a message..." oninput="sendTyping()" />
         <button id="recordBtn" onclick="toggleRecording()" title="Record Voice">🎙️</button>
-        <input type="file" id="imageInput" accept="image/*" style="display:none;" />
-        <button id="recordBtn" onclick="document.getElementById('imageInput').click()">🖼️</button>
       </div>          
     </div>
   </div>
@@ -253,6 +250,10 @@
       <ul id="userList" style="list-style: none; padding: 0;"></ul>
     </div>
     <button onclick="tryEditProfile()" style="margin-top:1rem; width:100%;">✏️ Edit Profile</button>
+    <hr style="border:0;border-top:1px solid #333;margin:10px 0;">
+    <label style="color:#aaa;">Change Profile Picture:</label>
+    <input type="file" accept="image/*" onchange="uploadSidebarAvatar(this)" style="color:#eee;">
+    <img id="sidebarAvatarPreview" style="margin-top:10px;width:60px;height:60px;border-radius:50%;display:none;" />
   </aside>
   <!-- Profile viewer -->
   <div id="profileViewer" style="display:none; position:fixed; top:0; right:0; background:#1a1a1a; width:300px; height:100%; z-index:1010; padding:1rem; box-shadow:-3px 0 10px rgba(0,0,0,0.4); overflow-y:auto;">
