@@ -243,6 +243,7 @@
         <div>Room: <span id="roomDisplay"></span></div>
         <div>You: <span id="userDisplay"></span></div>
         <div id="onlineStatus" style="color:#0f0;font-weight:bold;">● Online</div>
+        <div id="announcementArea" style="font-size:10px;margin-top:10px;word-wrap:break-word;"></div>
       </header>
 
       <div id="messages"></div>
@@ -264,6 +265,8 @@
     <label style="color:#aaa;">Change Profile Picture:</label>
     <input type="file" accept="image/*" onchange="uploadSidebarAvatar(this)" style="color:#eee;">
     <img id="sidebarAvatarPreview" style="margin-top:10px;width:60px;height:60px;border-radius:50%;display:none;" />
+    <button id="notifToggleBtn" onclick="toggleNotifications()" style="background:none;border:none;color:#00ffc3;cursor:pointer;">🔔 Enable Notifications</button>
+    <button id="addAnnouncementBtn" onclick="addAnnouncement()" style="display:none;margin-top:10px;background:none;border:1px solid #00ffc3;color:#00ffc3;padding:5px;border-radius:5px;cursor:pointer;">➕ Add Announcement</button>
   </aside>
   <div id="profileViewer" style="display:none; position:fixed; top:0; right:0; background:#1a1a1a; width:300px; height:100%; z-index:1010; padding:1rem; box-shadow:-3px 0 10px rgba(0,0,0,0.4); overflow-y:auto;">
     <h3>User Profile</h3>
