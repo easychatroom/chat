@@ -64,13 +64,21 @@
       margin: 0 auto;
     }
     header {
-      padding: 1rem;
+      padding: 0.8rem;
       background: #1f1f1f;
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      justify-content: center;
       align-items: center;
-      border-bottom: 1px solid #333;
+      gap: 10px;
+      font-size: 1rem;
+      text-align: center;
     }
+    
+    header > div, header > button {
+      font-size: 0.9rem;
+    }
+
     #sidebarToggle {
       background: none;
       border: none;
@@ -177,6 +185,13 @@
     @media (max-width: 768px) {
       #chatApp {
         max-width: 100%;
+      }
+      header {
+        font-size: 0.8rem;
+        gap: 5px;
+      }
+      header > div, header > button {
+        font-size: 0.8rem;
       }
     }
   </style>
