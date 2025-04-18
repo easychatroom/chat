@@ -177,6 +177,7 @@
       transition: right 0.3s ease;
     }
     #userSidebar.show {
+      overflow-y: auto;
       right: 0;
     }
     #announcementArea{
@@ -280,6 +281,8 @@
       <div id="input-bar">
         <input id="msgInput" placeholder="Type a message..." oninput="sendTyping()" />
         <button id="recordBtn" onclick="toggleRecording()" title="Record Voice">🎙️</button>
+        <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="uploadImage(this)">
+        <button id="imageBtn" onclick="document.getElementById('imageInput').click()" title="Send Image">🖼️</button>
       </div>          
     </div>
   </div>
