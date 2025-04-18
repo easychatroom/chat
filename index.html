@@ -285,7 +285,15 @@
   <aside id="userSidebar">
     <div style="padding: 1rem;">
       <h3>Users</h3>
-      <ul id="userList" style="list-style: none; padding: 0;"></ul>
+      <div style="padding: 1rem;">
+        <h3>Users</h3>
+        <ul id="userList" style="list-style: none; padding: 0;"></ul>
+      </div>
+      
+      <div id="adminControlsSection" style="display:none; padding: 1rem;">
+        <h3>Manage Users</h3>
+        <ul id="adminUserList" style="list-style: none; padding: 0;"></ul>
+      </div>      
     </div>
     <button onclick="tryEditProfile()" style="margin-top:1rem; width:100%;">✏️ Edit Profile</button>
     <hr style="border:0;border-top:1px solid #333;margin:10px 0;">
