@@ -313,6 +313,14 @@
       <small id="editProfileError" style="color:red;display:none;">Error text</small>
     </div>
   </div>  
+  <div class="game-container">
+    <h1>Multiplayer Pong</h1>
+    <canvas id="gameCanvas"></canvas>
+    <div class="instructions">
+      <p>Move: W/S or ↑/↓ &nbsp;|&nbsp; Press <strong>Space</strong> to ready</p>
+      <p id="gameStatus">Waiting for both players...</p>
+    </div>
+  </div>
   <aside id="userSidebar">
     <div style="padding: 1rem;">
       <h3>Users</h3>
@@ -343,5 +351,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
   <script src="script.js"></script>
+  <script src="pong-multiplayer.js"></script>
 </body>
 </html>
