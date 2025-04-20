@@ -342,12 +342,11 @@
     <div id="profileContent" style="white-space:pre-line;"></div>
     <button onclick="closeProfile()" style="margin-top:1rem;">Close</button>
   </div>
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script>
-    (function() {
-      emailjs.init("c1EG9jBJFQSM_dFHY"); // Your actual public key
-    })();
-  </script>
+  <script type="module">
+    import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/+esm';
+    window.emailjs = emailjs;
+    emailjs.init('c1EG9jBJFQSM_dFHY');
+  </script>  
   <audio id="msgSound" src="sounds/beep.mp3" preload="auto"></audio>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
