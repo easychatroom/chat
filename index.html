@@ -6,7 +6,7 @@
   <title>Easy Chatroom</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
+      * { box-sizing: border-box; }
     html, body {
       margin: 0; padding: 0;
       height: 100%;
@@ -14,6 +14,196 @@
       font-family: 'Inter', sans-serif;
       color: #eee;
     }
+
+    /* ==================== */
+    /* NEW RESPONSIVE LAYOUT */
+    /* ==================== */
+    #mainApp {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    
+    .title-bar {
+      background-color: #2c3e50;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    
+    .header {
+      background-color: #34495e;
+      display: flex;
+      padding: 10px;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .header-option {
+      color: white;
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .header-option:hover {
+      background-color: #2c3e50;
+    }
+    
+    .app-container {
+      display: flex;
+      flex: 1;
+      position: relative;
+    }
+    
+    .sidebar {
+      width: 250px;
+      background-color: #2c3e50;
+      padding: 20px 0;
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+      z-index: 5;
+    }
+    
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .sidebar-item {
+      padding: 12px 20px;
+      color: #eee;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+    }
+    
+    .sidebar-item:hover {
+      background-color: #34495e;
+    }
+    
+    .sidebar-item i {
+      margin-right: 10px;
+      width: 24px;
+      text-align: center;
+    }
+    
+    .content {
+      flex: 1;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      overflow-y: auto;
+      background-color: #121212;
+    }
+    
+    .box {
+      background-color: #1f1f1f;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 15px;
+      transition: transform 0.3s;
+    }
+    
+    .box:hover {
+      transform: translateY(-5px);
+    }
+    
+    .box-image {
+      width: 65%;
+      height: auto;
+      max-height: 65%;
+      object-fit: contain;
+    }
+    
+    .box-link {
+      padding: 15px;
+      text-align: center;
+      color: #00ffc3;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+      margin-top: 10px;
+    }
+    
+    .box-link:hover {
+      color: #00cc99;
+    }
+    
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+    
+    /* Mobile styles */
+    @media screen and (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
+      
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        height: 100%;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+      }
+      
+      .sidebar.visible {
+        transform: translateX(250px);
+      }
+      
+      .content {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        padding: 10px;
+      }
+      
+      .box {
+        height: 200px;
+      }
+      
+      .box-image {
+        width: 80%;
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      .content {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .box {
+        height: 180px;
+      }
+      
+      .box-link {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+
+    /* ====================== */
+    /* ORIGINAL UNCHANGED CSS */
+    /* ====================== */
     .screen {
       display: none;
       height: 100%;
@@ -75,7 +265,7 @@
       font-size: 1rem;
       text-align: center;
     }
-    
+
     header > div, header > button {
       font-size: 0.9rem;
     }
@@ -226,7 +416,6 @@
   </style>
 </head>
 <body>
-  <div id="pausedOverlay" style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(200,200,200,0.4);z-index:999;pointer-events:none;text-align:center;padding-top:30%;font-size:2rem;color:#444;">PAUSED</div>
   <div id="authScreen" class="screen">
     <div class="container">
       <h2 id="authTitle">Login</h2>
@@ -243,6 +432,39 @@
       </p>
     </div>
   </div>  
+  <div id="mainApp" style="display: none;">
+    <div class="title-bar">Web User Entertainment</div>
+
+    <div class="header">
+      <div class="header-option">Home</div>
+    </div>
+  
+    <div class="app-container">
+      <div class="sidebar" id="sidebar">
+        <ul class="sidebar-menu">
+          <li class="sidebar-item">
+            <i class="fas fa-cog"></i>
+            <span>Dashboard</span>
+          </li>
+          <li class="sidebar-item">
+            <i class="fas fa-info-circle"></i>
+            <span>About</span>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="box">
+          <img src="images/message.png" alt="Chatroom" class="box-image"/>
+          <a onclick="gotoRoomMenu()" class="box-link">Join Chatroom</a>
+        </div>
+        <div class="box">
+          <img src="images/2048.png" alt="2048" class="box-image"/>
+          <a onclick="redirectTo2048()" class="box-link">Play 2048</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="pausedOverlay" style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(200,200,200,0.4);z-index:999;pointer-events:none;text-align:center;padding-top:30%;font-size:2rem;color:#444;">PAUSED</div>
   <div id="profileScreen" class="screen">
     <div class="container">
       <h2>Set up your profile</h2>
