@@ -237,7 +237,8 @@
     <div class="container">
       <h2 id="authTitle">Login</h2>
       <input id="authEmail" type="email" placeholder="Email" />
-      <input id="authUsername" placeholder="Username (display name)" />
+      <button id="sendCodeBtn" onclick="sendVerificationCode()" style="background:#444;color:#0ff;">Send Verification Code</button>      
+      <input id="authUsername" placeholder="Username" />
       <input id="authPassword" type="password" placeholder="Password" />
       <input id="authVerificationCode" type="text" placeholder="Verification Code" style="display:none;" />      
       <input id="authPasswordConfirm" type="password" placeholder="Confirm Password" style="display:none;" />
@@ -351,6 +352,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging-compat.js"></script>
-  <script src="script.js"></script>
+  <script src="script-deob.js"></script>
 </body>
 </html>
