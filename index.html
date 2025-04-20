@@ -225,12 +225,6 @@
     }
   </style>
 </head>
-</script>
-<script type="module">
-  import emailjs from 'https://cdn.emailjs.com/dist/email.min.mjs';
-  window.emailjs = emailjs;
-  emailjs.init("c1EG9jBJFQSM_dFHY");
-</script>
 <body>
   <div id="pausedOverlay" style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(200,200,200,0.4);z-index:999;pointer-events:none;text-align:center;padding-top:30%;font-size:2rem;color:#444;">PAUSED</div>
   <div id="authScreen" class="screen">
@@ -348,10 +342,16 @@
     <div id="profileContent" style="white-space:pre-line;"></div>
     <button onclick="closeProfile()" style="margin-top:1rem;">Close</button>
   </div>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("c1EG9jBJFQSM_dFHY"); // Your actual public key
+    })();
+  </script>
   <audio id="msgSound" src="sounds/beep.mp3" preload="auto"></audio>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging-compat.js"></script>
-  <script src="script.js"></script>
+  <script src="script-deob.js"></script>
 </body>
 </html>
